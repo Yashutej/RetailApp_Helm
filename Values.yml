@@ -1,0 +1,41 @@
+namespace: yashu
+replicas: 3
+labels:
+  app: yashu-userprofile
+name: usernode-js-container
+image: 
+  repository: saiteja2502/userprofileretail
+  tag: latest 
+port: 3130
+env:
+  - name: MONGODB_URI
+    value: "mongodb://mongodb:27017/myDatabase"
+  - name: SESSION_SECRET
+    value: "1234"
+  - name: EMAIL_USER
+    value: "chagantyteja2502@gmail.com"
+  - name: EMAIL_PASS
+    value: "yxoq bjuk rdnt alzp"
+  - name: PORT
+    value: "3130"
+service:
+  port: 3130
+  targetPort: 3130
+  type: LoadBalancer
+
+mongodb: 
+  namespace: yashu
+  replicas: 1
+  labels: 
+    app: mongodb
+  name: mongodb
+  image:
+    repository: mongo
+    tag: latest
+  port: 27017
+  env:
+    name: MONGO_INITDB_DATABASE
+    value: "myDatabase"
+  service:
+    port: 27017
+    targetPort: 27017
