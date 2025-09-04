@@ -1,0 +1,37 @@
+4  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    5  chmod 700 get_helm.sh 
+    6  ./get_helm.sh 
+    7  kubectl create namespace yashu
+    8  helm create retail-app-chart
+    9  ls
+   10  cd retail-app-chart/
+   11  ls
+   12  > values.yaml 
+   13  vi values.yaml 
+   14  cd templates/
+   15  ls
+   16  rm rf *
+   17  rm -rf *
+   18  ls
+   19  vi mongodb-deployment.yml
+   20  vi mongodb-service.yml
+   21  vi usernode-js-service.yml
+   22  vi userprofile-deployment.yml
+   23  cd ..
+   24  helm install retail-app-release --debug --dry-run retail-app-chart
+   25  cd retail-app-chart/
+   26  ls
+   27  cd templates/
+   28  ls
+   29  vi mongodb-deployment.yml 
+   30  cd ../..
+   31  helm install retail-app-release --debug --dry-run retail-app-chart
+   32  kubectl get all 
+   33  kubectl get all -n yashu
+   34  kubectl get svc
+   35  helm install retail-app-release retail-app-chart --namespace yashu --create-namespace
+   36  kubectl get all -n yashu
+   37  kubectl get svc -n yashu
+   38  kubectl describe svc retail-app-release-service
+   39  kubectl describe svc retail-app-release-service -n yashu
+   40  history
